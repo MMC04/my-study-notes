@@ -1,0 +1,32 @@
+/* Category navigation pills */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 4px;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container a > button {
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.container a > button:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-text);
+}

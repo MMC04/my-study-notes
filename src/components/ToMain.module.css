@@ -1,0 +1,25 @@
+/* Brand / logo link */
+.container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-right: 24px;
+  margin-right: 20px;
+  border-right: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.container a > button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.container a > button:hover {
+  color: var(--color-text-secondary);
+}

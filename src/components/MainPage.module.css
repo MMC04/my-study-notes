@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  flex: 1;
+}
+
+.list {
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+}
+
+.item {
+  border-bottom: 1px solid var(--color-border);
+}

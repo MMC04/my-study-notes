@@ -1,0 +1,49 @@
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* EditButton renders as <a><button> */
+.wrapper > a {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 24px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.wrapper > a > button {
+  padding: 7px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.wrapper > a > button:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+/* DeleteButton renders as <button> — align-self: flex-end 으로 우측 정렬 */
+.wrapper > button {
+  align-self: flex-end;
+  margin-right: 24px;
+  margin-top: 8px;
+  padding-bottom: 48px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wrapper > button:hover {
+  color: var(--color-danger);
+}

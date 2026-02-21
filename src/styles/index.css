@@ -1,0 +1,85 @@
+/* ─── Reset ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Variables ───────────────────────────────────────── */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+    Arial, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+
+  --color-bg: #ffffff;
+  --color-surface: #f8f8f8;
+  --color-border: #e5e5e5;
+  --color-border-strong: #c8c8c8;
+
+  --color-text: #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted: #999999;
+
+  --color-primary: #111111;
+  --color-primary-hover: #333333;
+  --color-primary-text: #ffffff;
+
+  --color-danger: #c42b2b;
+  --color-danger-bg: #fff5f5;
+  --color-danger-border: #f5c0c0;
+
+  --max-width: 760px;
+  --header-height: 56px;
+}
+
+/* ─── Base ────────────────────────────────────────────── */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color-scheme: light;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── Elements ────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1em;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
