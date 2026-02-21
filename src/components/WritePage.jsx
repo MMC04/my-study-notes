@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from './WritePage.module.css';
+import { API_URL } from "../config";
 
 function WritePage() {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ function WritePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/categories")
+    fetch(`${API_URL}/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -28,7 +29,7 @@ function WritePage() {
     const tagsArray = tags.split(',').map(tag => tag.trim());
 
     try {
-      await fetch('http://localhost:3000/articles', {
+      await fetch(`${API_URL}/articles`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, content, category, tags: tagsArray })

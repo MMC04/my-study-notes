@@ -4,13 +4,14 @@ import ArticleCard from "./ArticleCard";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import styles from './ArticleDetail.module.css';
+import { API_URL } from "../config";
 
 function ArticleDetail() {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`${API_URL}/articles/${id}`)
       .then((res) => res.json())
       .then((article) => setArticle(article));
   }, [id]);

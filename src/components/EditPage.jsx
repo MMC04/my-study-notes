@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from './EditPage.module.css';
+import { API_URL } from "../config";
 
 function EditPage() {
   const [categories, setCategories] = useState([]);
@@ -13,13 +14,13 @@ function EditPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:3000/categories")
+    fetch(`${API_URL}}/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${id}`)
+    fetch(`${API_URL}/articles}/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCategory(data.category);
@@ -40,7 +41,7 @@ function EditPage() {
     const tagsArray = tags.split(",").map((tag) => tag.trim());
 
     try {
-      await fetch(`http://localhost:3000/articles/${id}`, {
+      await fetch(`${API_URL}/articles/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content, category, tags: tagsArray }),

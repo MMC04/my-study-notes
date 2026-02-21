@@ -5,6 +5,7 @@ import WriteButton from "./WriteButton";
 import PageIndex from "./PageIndex";
 import ArticlePreview from "./ArticlePreview";
 import styles from './MainPage.module.css';
+import { API_URL } from "../config";
 
 function MainPage() {
   const [articles, setArticles] = useState([]);
@@ -15,7 +16,7 @@ function MainPage() {
   const page = searchParams.get('page') || 1;
 
   useEffect(() => {
-    let url = `http://localhost:3000/articles?page=${page}`;
+    let url = `${API_URL}/articles?page=${page}`;
     if (category) {
       url += `&category=${category}`;
     }

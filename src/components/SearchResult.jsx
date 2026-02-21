@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ArticlePreview from "./ArticlePreview";
 import styles from './SearchResult.module.css';
+import { API_URL } from "../config";
 
 function SearchResults() {
   const [articles, setArticles] = useState([]);
@@ -15,7 +16,7 @@ function SearchResults() {
 
     setIsLoading(true);
 
-    fetch(`http://localhost:3000/articles/search?keyword=${keyword}`)
+    fetch(`${API_URL}/articles/search?keyword=${keyword}`)
       .then(response => response.json())
       .then(data => {
         setArticles(data);

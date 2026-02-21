@@ -1,4 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
+import { API_URL } from "../config";
 
 function DeleteButton({ title, id }) {
   const navigate = useNavigate();
@@ -6,7 +7,7 @@ function DeleteButton({ title, id }) {
   async function handleDelete() {
     if (confirm(`${title} 글을 정말 삭제하시겠습니까?`)) {
       try {
-        await fetch(`http://localhost:3000/articles/${id}`, {
+        await fetch(`${API_URL}/articles}/${id}`, {
           method: "DELETE",
         });
         navigate("/");

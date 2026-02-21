@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import styles from './Nav.module.css'
+import { API_URL } from "../config";
 
 function Nav() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/categories').then(res => res.json())
+        fetch(`${API_URL}/categories`).then(res => res.json())
         .then(data => setCategories(data))
     }, [categories])
 
