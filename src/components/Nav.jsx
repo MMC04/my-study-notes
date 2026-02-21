@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import styles from './Nav.module.css'
-import { API_URL } from "../config";
+import { API_URL } from "../config.js";
 
 function Nav() {
     const [categories, setCategories] = useState([]);
