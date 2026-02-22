@@ -29,8 +29,10 @@ function ArticleDetail() {
         tags={article.tags}
         content={article.content}
       />
-      <EditButton id={article.id}/>
-      <DeleteButton id={article.id} title={article.title} />
+      <div className={styles.buttons}>
+        <EditButton id={article.id}/>
+        <DeleteButton id={article.id} title={article.title} />
+      </div>
     </article>
   );
 }
