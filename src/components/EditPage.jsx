@@ -20,7 +20,7 @@ function EditPage() {
   }, []);
 
   useEffect(() => {
-    fetch(`${API_URL}/articles}/${id}`)
+    fetch(`${API_URL}/articles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCategory(data.category);

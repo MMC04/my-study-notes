@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import styles from './Nav.module.css'
 import { API_URL } from "../config";
 
 function Nav() {
     const [categories, setCategories] = useState([]);
-
+    
     useEffect(() => {
         fetch(`${API_URL}/categories`).then(res => res.json())
         .then(data => setCategories(data))
-    }, [categories])
+    }, [])
+
+    const [searchParams] = useSearchParams();
+    const currentCategory = searchParams.get('category')
 
     return (
         <nav className={styles.container} >
             {categories.map(category => (
                 <Link key={category} to={`/?category=${category}`}>
-                    <button>{category}</button>
+                    <button className={`${styles.btn}${category === currentCategory ? ` ${styles.active}`:''}`}>{category}</button>
                 </Link>
             ))}
         </nav>
