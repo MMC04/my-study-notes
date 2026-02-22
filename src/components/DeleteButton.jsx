@@ -7,7 +7,7 @@ function DeleteButton({ title, id }) {
   async function handleDelete() {
     if (confirm(`${title} 글을 정말 삭제하시겠습니까?`)) {
       try {
-        await fetch(`${API_URL}/articles}/${id}`, {
+        await fetch(`${API_URL}/articles/${id}`, {
           method: "DELETE",
         });
         navigate("/");
