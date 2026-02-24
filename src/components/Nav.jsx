@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { API_URL } from "../config";
-import RenderMath from "../utils/renderMath";
+import RenderMath from "../utils/RenderMath";
 
 function Nav() {
   const [categories, setCategories] = useState([]);

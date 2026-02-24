@@ -5,7 +5,7 @@ import styles from "./ArticlePreview.module.css";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import RenderMath from "../utils/renderMath";
+import RenderMath from "../utils/RenderMath";
 
 function ArticlePreview({ id, title, content }) {
   return (

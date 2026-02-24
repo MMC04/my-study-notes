@@ -5,7 +5,7 @@ import { API_URL } from "../config";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import RenderMath from "../utils/renderMath";
+import RenderMath from "../utils/RenderMath";
 
 function EditPage () {
   const [categories, setCategories] = useState([]);
