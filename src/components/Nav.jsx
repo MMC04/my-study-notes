@@ -1,28 +1,34 @@
-import { useEffect, useState } from "react"
-import { Link, useSearchParams } from 'react-router-dom'
-import styles from './Nav.module.css'
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import styles from "./Nav.module.css";
 import { API_URL } from "../config";
+import RenderMath from "../utils/renderMath";
 
 function Nav() {
-    const [categories, setCategories] = useState([]);
-    
-    useEffect(() => {
-        fetch(`${API_URL}/categories`).then(res => res.json())
-        .then(data => setCategories(data))
-    }, [])
+  const [categories, setCategories] = useState([]);
 
-    const [searchParams] = useSearchParams();
-    const currentCategory = searchParams.get('category')
+  useEffect(() => {
+    fetch(`${API_URL}/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
-    return (
-        <nav className={styles.container} >
-            {categories.map(category => (
-                <Link key={category} to={`/?category=${category}`}>
-                    <button className={`${styles.btn}${category === currentCategory ? ` ${styles.active}`:''}`}>{category}</button>
-                </Link>
-            ))}
-        </nav>
-    )
+  const [searchParams] = useSearchParams();
+  const currentCategory = searchParams.get("category");
+
+  return (
+    <nav className={styles.container}>
+      {categories.map((category) => (
+        <Link key={category} to={`/?category=${category}`}>
+          <button
+            className={`${styles.btn}${category === currentCategory ? ` ${styles.active}` : ""}`}
+          >
+            <RenderMath text={category}/>
+          </button>
+        </Link>
+      ))} 
+    </nav>
+  );
 }
 
-export default Nav
+export default Nav;

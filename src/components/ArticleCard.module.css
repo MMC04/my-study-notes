@@ -47,9 +47,8 @@
   color: var(--color-primary-text);
 }
 
-.body {
+.body > * {
   font-size: 15px;
   line-height: 1.85;
   color: #222222;
-  white-space: pre-wrap;
 }

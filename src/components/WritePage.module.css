@@ -27,8 +27,13 @@
   color: #bbbbbb;
 }
 
-.textarea {
-  width: 100%;
+.content {
+  display: flex;
+  gap: 5px;
+}
+
+.textarea, .preview {
+  width: 50%;
   padding: 12px 16px;
   border: 1px solid var(--color-border);
   border-radius: 6px;
@@ -45,9 +50,11 @@
   border-color: var(--color-text);
 }
 
-.textarea::placeholder {
+.textarea::placeholder, .previewPlaceholder {
   color: #bbbbbb;
 }
+
+
 
 .submit {
   align-self: flex-end;
