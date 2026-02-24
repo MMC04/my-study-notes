@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import ArticlePreview from "./ArticlePreview";
 import styles from './SearchResult.module.css';
 import { API_URL } from "../config";
+import RenderMath from "../utils/RenderMath";
 
 function SearchResults() {
   const [articles, setArticles] = useState([]);
@@ -46,7 +47,7 @@ function SearchResults() {
 
   return (
     <main className={styles.container}>
-      <h2 className={styles.heading}>"{keyword}" 검색 결과</h2>
+      <h2 className={styles.heading}> <RenderMath text={`"${keyword}"`} /> 검색 결과</h2>
       <p className={styles.count}>{articles.length}개의 결과</p>
 
       {articles.length === 0 ? (
