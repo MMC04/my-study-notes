@@ -34,7 +34,7 @@ function WritePage () {
     const tagsArray = tags.split(",").map((tag) => tag.trim());
 
     try {
-      await fetch(`${API_URL}/articles/${id}`, {
+      await fetch(`${API_URL}/articles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content, category, tags: tagsArray }),

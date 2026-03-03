@@ -11,7 +11,9 @@ function ArticleDetail() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${API_URL}/articles/${id}`)
+    fetch(`${API_URL}/articles/${id}`
+      , {headers: `Authorization = Bearer ${accessToken}`}
+    )
       .then((res) => res.json())
       .then((article) => setArticle(article));
   }, [id]);
