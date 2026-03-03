@@ -43,7 +43,7 @@ function WritePage () {
       console.error("저장 실패:", error);
       alert("저장에 실패했습니다.");
     }
-    alert("수정 완료");
+    alert("저장 완료");
     navigate("/");
   };
 
