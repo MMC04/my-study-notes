@@ -6,8 +6,10 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import RenderMath from "../utils/RenderMath";
+import { useAuth } from "../auth/AuthContext";
 
-function ArticlePreview({ id, title, content }) {
+function ArticlePreview({ id, title, content, author_id }) {
+  const { user } = useAuth();
   return (
     <article className={styles.card}>
       <h3 className={styles.title}>
@@ -23,10 +25,12 @@ function ArticlePreview({ id, title, content }) {
           {content.slice(0, 100)}
         </ReactMarkdown>
       </div>
-      <div className={styles.buttons}>
-        <EditButton id={`${id}`} />
-        <DeleteButton id={`${id}`} title={`${title}`} />
-      </div>
+    { user.id === author_id &&
+        <div className={styles.buttons}>
+          <EditButton id={`${id}`} />
+          <DeleteButton id={`${id}`} title={`${title}`} />
+        </div>
+    }
     </article>
   );
 }

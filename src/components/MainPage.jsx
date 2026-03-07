@@ -39,6 +39,7 @@ function MainPage() {
               title={article.title}
               content={article.content}
               id={article.id}
+              author_id={article.author_id}
             />
           </li>
         ))}

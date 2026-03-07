@@ -9,6 +9,7 @@ import { API_URL } from "../config";
 function ArticleDetail() {
   const [article, setArticle] = useState(null);
   const { id } = useParams();
+  const { user } = useAuth();
 
   useEffect(() => {
     fetch(`${API_URL}/articles/${id}`
@@ -31,10 +32,12 @@ function ArticleDetail() {
         tags={article.tags}
         content={article.content}
       />
-      <div className={styles.buttons}>
-        <EditButton id={article.id}/>
-        <DeleteButton id={article.id} title={article.title} />
-      </div>
+      {user.id === article.author_id &&
+        <div className={styles.buttons}>
+          <EditButton id={article.id}/>
+          <DeleteButton id={article.id} title={article.title} />
+        </div>
+      }
     </article>
   );
 }
