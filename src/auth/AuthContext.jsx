@@ -78,19 +78,21 @@ export function AuthProvider({children}) {
             return user;
     };
 
-    async function login (email, pw) {
-        const { accessToken } = await fetchJson(`${API_URL}/login`,
-            {
+    async function login(email, pw) {
+        try {
+            const { accessToken } = await fetchJson(`${API_URL}/login`, {
                 method: 'POST',
-                headers: {'Content-Type' : 'application/json'},
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email, pw}),
                 credentials: 'include'
-            }
-        )
-        setAccessToken(accessToken);
-
-        await loadMe (accessToken);
-
+            });
+            setAccessToken(accessToken);
+            await loadMe(accessToken);
+            console.log('login 성공');
+        } catch(err) {
+            console.error('login 내부 에러:', err);
+            throw err;
+        }
     }
 
     async function logout() {
