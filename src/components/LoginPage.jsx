@@ -16,8 +16,13 @@ function LoginPage () {
             return;
         }
 
-        await login(email, pw)
-        navigate('/');
+        try {
+            await login(email, pw)
+            navigate('/');
+        } catch (err) {
+            alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+        }
+
     }
 
 

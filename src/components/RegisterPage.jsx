@@ -9,14 +9,14 @@ function RegisterPage () {
     const [pw, setPw] = useState('');
 
     const handleSubmit = async (e) => {
-        preventDefault(e);
+        e.preventDefault();
 
         if (!email || !pw) {
             alert("email과 비밀번호를 모두 입력하세요.");
             return;
         }
 
-        await fecth (`${API_URL}/register`, {
+        await fetch (`${API_URL}/register`, {
             method: 'POST',
             headers: {'Content-type' : 'application/json'},
             body: JSON.stringify({email, pw}),
