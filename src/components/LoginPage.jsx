@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
+import styles from "./LoginPage.module.css";
 
 function LoginPage () {
     const [email, setEmail] = useState('');
@@ -27,13 +28,18 @@ function LoginPage () {
 
 
     return (
-        <main>
-            <form onSubmit={handleSubmit}>
-                <input type="email" placeholder="Email을 입력하세요." value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <input type="password" placeholder="비밀번호를 입력하세요." value={pw} onChange={(e) => setPw(e.target.value)}/>
-                <button type="submit">로그인</button>
-            </form>
-            <Link to='/register'>회원가입</Link>
+        <main className={styles.container}>
+            <div className={styles.card}>
+                <h1 className={styles.title}>로그인</h1>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <input className={styles.input} type="email" placeholder="Email을 입력하세요." value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input className={styles.input} type="password" placeholder="비밀번호를 입력하세요." value={pw} onChange={(e) => setPw(e.target.value)}/>
+                    <button className={styles.submit} type="submit">로그인</button>
+                </form>
+                <p className={styles.footer}>
+                    계정이 없으신가요? <Link to='/register'>회원가입</Link>
+                </p>
+            </div>
         </main>
     )
 }

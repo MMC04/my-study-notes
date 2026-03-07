@@ -23,7 +23,10 @@ function App() {
       <header className={styles.header}>
         <ToMain />
         <Nav />
-        {!user ? <Link to='/login'>로그인</Link> : <button onClick={logout}>로그아웃</button>}
+        {!user
+          ? <Link to='/login' className={styles.authBtn}>로그인</Link>
+          : <button className={styles.authBtn} onClick={logout}>로그아웃</button>
+        }
       </header>
       <Routes>
         <Route path="/" element={<MainPage />} />
