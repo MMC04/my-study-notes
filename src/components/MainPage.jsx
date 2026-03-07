@@ -27,7 +27,7 @@ function MainPage() {
         setArticles(data.articles);
         setTotalPages(data.totalPages);
       });
-  }, [category, page, articles]);
+  }, []);
 
   return (
     <main className={styles.container}>
