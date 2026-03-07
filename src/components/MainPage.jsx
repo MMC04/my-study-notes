@@ -11,6 +11,7 @@ function MainPage() {
   const [articles, setArticles] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [searchParams] = useSearchParams();
+  const { user } = useAuth();
 
   const category = searchParams.get('category');
   const page = searchParams.get('page') || 1;
@@ -44,7 +45,9 @@ function MainPage() {
           </li>
         ))}
       </ul>
-      <WriteButton />
+      {user &&
+        <WriteButton />
+      }
       <PageIndex totalPages={totalPages} />
     </main>
   );
