@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import RenderMath from "../utils/RenderMath";
+import { useAuth } from "../auth/AuthContext";
 
 function WritePage () {
   const [categories, setCategories] = useState([]);
@@ -16,6 +17,8 @@ function WritePage () {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { authFetch } = useAuth();
 
   useEffect(() => {
     fetch(`${API_URL}/categories`)
@@ -34,7 +37,7 @@ function WritePage () {
     const tagsArray = tags.split(",").map((tag) => tag.trim());
 
     try {
-      await fetch(`${API_URL}/articles`, {
+      await authFetch(`${API_URL}/articles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content, category, tags: tagsArray }),

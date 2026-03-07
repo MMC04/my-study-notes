@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import RenderMath from "../utils/RenderMath";
+import { useAuth } from "../auth/AuthContext";
 
 function EditPage () {
   const [categories, setCategories] = useState([]);
@@ -17,6 +18,8 @@ function EditPage () {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const { authFetch } = useAuth();
+
   useEffect(() => {
     fetch(`${API_URL}/categories`)
       .then((res) => res.json())
@@ -24,7 +27,7 @@ function EditPage () {
   }, []);
 
   useEffect(() => {
-    fetch(`${API_URL}/articles/${id}`)
+    authFetch(`${API_URL}/articles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCategory(data.category);
