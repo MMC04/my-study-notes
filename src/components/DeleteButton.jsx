@@ -21,7 +21,7 @@ function DeleteButton({ title, id }) {
     }
   }
 
-  return (<Link><button onClick={handleDelete}>삭제</button></Link>);
+  return (<Link to="/"><button onClick={handleDelete}>삭제</button></Link>);
 }
 
 export default DeleteButton;

@@ -27,7 +27,7 @@ function EditPage () {
   }, []);
 
   useEffect(() => {
-    authFetch(`${API_URL}/articles/${id}`)
+    fetch(`${API_URL}/articles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCategory(data.category);
@@ -48,7 +48,7 @@ function EditPage () {
     const tagsArray = tags.split(",").map((tag) => tag.trim());
 
     try {
-      await fetch(`${API_URL}/articles/${id}`, {
+      await authFetch(`${API_URL}/articles/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content, category, tags: tagsArray }),
