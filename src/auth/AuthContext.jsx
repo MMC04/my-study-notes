@@ -66,7 +66,7 @@ export function AuthProvider({children}) {
         return p;
     }
 
-    async function loadMe (token, { signal }) {
+    async function loadMe (token, { signal } = {}) {
             const { user } = await fetchJson(`${API_URL}/me`, 
                 {
                     headers: {Authorization : `Bearer ${token}`},
@@ -87,7 +87,7 @@ export function AuthProvider({children}) {
                 credentials: 'include'
             });
             setAccessToken(accessToken);
-            await loadMe(accessToken, { signal } = {});
+            await loadMe(accessToken);
             console.log('login 성공');
         } catch(err) {
             console.error('login 내부 에러:', err);
