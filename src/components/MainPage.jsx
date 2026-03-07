@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import Search from "./Search";
 import WriteButton from "./WriteButton";
 import PageIndex from "./PageIndex";
@@ -17,6 +17,8 @@ function MainPage() {
   const category = searchParams.get('category');
   const page = searchParams.get('page') || 1;
 
+  const location = useLocation();
+
   useEffect(() => {
     let url = `${API_URL}/articles?page=${page}`;
     if (category) {
@@ -29,7 +31,7 @@ function MainPage() {
         setArticles(data.articles);
         setTotalPages(data.totalPages);
       });
-  }, []);
+  }, [page, category, location.key]);
 
   return (
     <main className={styles.container}>

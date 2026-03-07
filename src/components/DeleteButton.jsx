@@ -13,6 +13,7 @@ function DeleteButton({ title, id }) {
         await authFetch(`${API_URL}/articles/${id}`, {
           method: "DELETE",
         });
+        alert("삭제되었습니다.")
         navigate("/");
       } catch (error) {
         console.error("삭제 실패:", error);
@@ -21,7 +22,7 @@ function DeleteButton({ title, id }) {
     }
   }
 
-  return (<Link to="/"><button onClick={handleDelete}>삭제</button></Link>);
+  return (<Link><button onClick={handleDelete}>삭제</button></Link>);
 }
 
 export default DeleteButton;
