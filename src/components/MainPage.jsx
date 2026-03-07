@@ -6,6 +6,7 @@ import PageIndex from "./PageIndex";
 import ArticlePreview from "./ArticlePreview";
 import styles from './MainPage.module.css';
 import { API_URL } from "../config";
+import { useAuth } from "../auth/AuthContext";
 
 function MainPage() {
   const [articles, setArticles] = useState([]);
