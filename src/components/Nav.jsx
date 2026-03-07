@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { API_URL } from "../config";
 import RenderMath from "../utils/RenderMath";
@@ -7,11 +7,13 @@ import RenderMath from "../utils/RenderMath";
 function Nav() {
   const [categories, setCategories] = useState([]);
 
+  const location = useLocation();
+
   useEffect(() => {
     fetch(`${API_URL}/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, []);
+  }, [location.key]);
 
   const [searchParams] = useSearchParams();
   const currentCategory = searchParams.get("category");
