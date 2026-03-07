@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./EditPage.module.css";
+import styles from "./WritePage.module.css";
 import { API_URL } from "../config";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from "remark-math";
@@ -16,7 +16,6 @@ function WritePage () {
   const [tags, setTags] = useState("");
 
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const { authFetch } = useAuth();
 

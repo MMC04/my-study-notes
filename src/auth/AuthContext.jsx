@@ -29,16 +29,12 @@ export function AuthProvider({children}) {
     }
 
     async function refreshAccessToken({ signal } = {}) {
-        console.log('[1] refreshAccessToken 진입, inFlight 있음?', !!refreshInFlightRef.current);
-
         if (refreshInFlightRef.current) {
-            console.log('[2] inFlight promise 재사용');
             return refreshInFlightRef.current;
         }
 
         const p = (async () => {
             try {
-                console.log('[3] fetchJson 호출 직전, signal aborted?', signal?.aborted);
                 const { accessToken } = await fetchJson(`${API_URL}/token/refresh`,
                     {
                         method: 'POST',
@@ -46,18 +42,15 @@ export function AuthProvider({children}) {
                         signal,
                     }
                 );
-                console.log('[4] fetchJson 성공, accessToken 수신');
                 setAccessToken(accessToken);
                 return accessToken;
             }
             catch (err) {
-                console.log('[5] refreshAccessToken catch:', err?.name, err?.message);
                 setAccessToken(null);
                 setUser(null);
                 return null;
             }
             finally {
-                console.log('[6] refreshAccessToken finally, inFlight 초기화');
                 refreshInFlightRef.current = null;
             }
         })();
@@ -88,7 +81,6 @@ export function AuthProvider({children}) {
             });
             setAccessToken(accessToken);
             await loadMe(accessToken);
-            console.log('login 성공');
         } catch(err) {
             console.error('login 내부 에러:', err);
             throw err;
@@ -139,30 +131,24 @@ export function AuthProvider({children}) {
     }
 
     useEffect(() => {
-        console.log('[A] useEffect 시작');
         const controller = new AbortController();
 
         (async () =>  {
             try {
-                console.log('[B] refreshAccessToken 호출 전');
                 const token = await refreshAccessToken({ signal: controller.signal });
-                console.log('[C] refreshAccessToken 반환값:', token);
                 if (token) await loadMe(token, { signal: controller.signal });
             } 
             catch(err) {
-                console.log('[D] useEffect catch:', err?.name, err?.message);
                 if (err?.name == "AbortError") return;
                 setAccessToken(null);
                 setUser(null);
             } 
             finally {
-                console.log('[E] useEffect finally → setIsAuthLoading(false)');
                 setIsAuthLoading(false);
             }
         })();
 
         return () => {
-            console.log('[F] useEffect cleanup → controller.abort()');
             controller.abort();
         }
     },[]);
